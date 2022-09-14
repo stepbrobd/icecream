@@ -1,0 +1,30 @@
+app = "com-stepbrobd-git"
+kill_signal = "SIGINT"
+kill_timeout = 5
+
+[env]
+SOFT_SERVE_HOST = "Git.StepBroBD.com"
+
+[build]
+image = "charmcli/soft-serve:latest"
+
+[mounts]
+source = "com_stepbrobd_git"
+destination = "/data"
+
+[experimental]
+allowed_public_ports = [22]
+auto_rollback = false
+
+[[services]]
+internal_port = 23231
+protocol = "tcp"
+
+[[services.ports]]
+port = 22
+
+[[services.tcp_checks]]
+grace_period = "300s"
+interval = "15s"
+timeout = "1s"
+restart_limit = 0
