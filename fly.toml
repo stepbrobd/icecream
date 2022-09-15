@@ -4,7 +4,7 @@ kill_timeout = 5
 
 [env]
 SOFT_SERVE_HOST = "Git.StepBroBD.com"
-SOFT_SERVE_PORT = "22"
+SOFT_SERVE_PORT = "23231"
 
 [build]
 image = "charmcli/soft-serve:latest"
@@ -18,7 +18,7 @@ allowed_public_ports = [22]
 auto_rollback = false
 
 [[services]]
-internal_port = 22
+internal_port = 23231
 protocol = "tcp"
 
 [[services.ports]]
