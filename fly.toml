@@ -14,7 +14,7 @@ source = "com_stepbrobd_git"
 destination = "/data"
 
 [experimental]
-allowed_public_ports = [22]
+allowed_public_ports = [23231]
 auto_rollback = false
 
 [[services]]
@@ -22,7 +22,7 @@ internal_port = 23231
 protocol = "tcp"
 
 [[services.ports]]
-port = 22
+port = 23231
 
 [[services.tcp_checks]]
 grace_period = "300s"
