@@ -1,31 +1,30 @@
 app = "com-stepbrobd-git"
 kill_signal = "SIGINT"
 kill_timeout = 5
-
-[env]
-SOFT_SERVE_HOST = "Git.StepBroBD.com"
-SOFT_SERVE_PORT = "23231"
+processes = []
 
 [build]
 image = "charmcli/soft-serve:latest"
 
-[mounts]
-source = "com_stepbrobd_git"
-destination = "/data"
+[env]
+SOFT_SERVE_HOST = "git.stepbrobd.com"
+SOFT_SERVE_BIND_ADDRESS = "0.0.0.0"
+SOFT_SERVE_PORT = "23231"
+SOFT_SERVE_INITIAL_ADMIN_KEY = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICVktHp6yjTknysVbU24K014tFKCIIM3/rWqZV591NRn Yifei@Yifeis-MacBook-Pro.local"
 
-[experimental]
-allowed_public_ports = [23231]
-auto_rollback = false
+[mounts]
+destination = "/data"
+source = "com_stepbrobd_git"
 
 [[services]]
 internal_port = 23231
 protocol = "tcp"
 
 [[services.ports]]
-port = 23231
+port = 22
 
 [[services.tcp_checks]]
-grace_period = "300s"
+grace_period = "1s"
 interval = "15s"
-timeout = "1s"
 restart_limit = 0
+timeout = "2s"
