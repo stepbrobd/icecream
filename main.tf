@@ -39,7 +39,7 @@ variable "config" {
 }
 
 provider "fly" {
-  fly_http_endpoint = "https://api.machines.dev"
+  fly_http_endpoint = "api.machines.dev"
 }
 
 resource "fly_app" "app" {
