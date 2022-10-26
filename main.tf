@@ -47,10 +47,11 @@ resource "fly_app" "app" {
 }
 
 resource "fly_volume" "volume" {
-  app    = var.config["proejct_name"]
-  name   = replace(format("%s-volume", var.config["proejct_name"]), "-", "_")
-  region = var.config["region"]
-  size   = tonumber(var.config["disk_size"])
+  app        = var.config["proejct_name"]
+  name       = replace(format("%s-volume", var.config["proejct_name"]), "-", "_")
+  region     = var.config["region"]
+  size       = tonumber(var.config["disk_size"])
+  depends_on = [fly_app.app]
 }
 
 resource "fly_ip" "ipv4" {
@@ -71,10 +72,9 @@ resource "fly_machine" "machine" {
   region = var.config["region"]
   image  = "charmcli/soft-serve:latest"
 
-  cpus       = tonumber(var.config["cpu_count"])
-  cputype    = var.config["cpu_type"]
-  memorymb   = tonumber(var.config["ram_size"])
-  depends_on = [fly_app.app, fly_volume.volume]
+  cpus     = tonumber(var.config["cpu_count"])
+  cputype  = var.config["cpu_type"]
+  memorymb = tonumber(var.config["ram_size"])
 
   env = {
     "SOFT_SERVE_BIND_ADDRESS"      = "0.0.0.0"
@@ -94,6 +94,8 @@ resource "fly_machine" "machine" {
     protocol      = "tcp"
     ports         = [{ port = tonumber(var.config["public_port"]) }]
   }]
+
+  depends_on = [fly_app.app, fly_volume.volume]
 }
 
 provider "cloudflare" {}
