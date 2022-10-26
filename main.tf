@@ -38,7 +38,9 @@ variable "config" {
   }
 }
 
-provider "fly" {}
+provider "fly" {
+  FLY_HTTP_ENDPOINT = "https://api.machines.dev"
+}
 
 resource "fly_app" "app" {
   name = var.config["proejct_name"]
