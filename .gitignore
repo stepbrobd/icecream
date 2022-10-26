@@ -1,1 +1,5 @@
-config
+config/
+
+.terraform
+.terraform.tfstate.d/
+.terraform.lock.hcl
