@@ -13,7 +13,7 @@ terraform {
     }
     cloudflare = {
       source  = "cloudflare/cloudflare"
-      version = "3.26.0"
+      version = "3.27.0"
     }
   }
 }
@@ -28,11 +28,11 @@ variable "config" {
     "public_domain_zone_id" = "b344936e258a6bd57c5e00af70fe0326"
     "public_port"           = "22"
 
-    "admin_ssh_key" = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICVktHp6yjTknysVbU24K014tFKCIIM3/rWqZV591NRn Yifei@Yifeis-MacBook-Pro.local"
+    "admin_ssh_key" = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICVktHp6yjTknysVbU24K014tFKCIIM3/rWqZV591NRn"
 
     "region"    = "sjc"    # https://fly.io/docs/reference/regions
     "cpu_count" = "1"      # at least 1
-    "cpu_type"  = "shared" # shared, dedicated
+    "cpu_type"  = "shared" # shared, standard, performance
     "ram_size"  = "512"    # MB
     "disk_size" = "5"      # GB
   }
