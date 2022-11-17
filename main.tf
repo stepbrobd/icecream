@@ -70,7 +70,7 @@ resource "fly_machine" "machine" {
   app    = var.config["proejct_name"]
   name   = replace(format("%s-machine", var.config["proejct_name"]), "-", "_")
   region = var.config["region"]
-  image  = "charmcli/soft-serve:v0.4.2"
+  image  = "charmcli/soft-serve:v0.4.3"
 
   cpus     = tonumber(var.config["cpu_count"])
   cputype  = var.config["cpu_type"]
