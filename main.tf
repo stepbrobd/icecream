@@ -9,7 +9,7 @@ terraform {
   required_providers {
     fly = {
       source  = "fly-apps/fly"
-      version = "0.0.20"
+      version = "0.0.21"
     }
     cloudflare = {
       source  = "cloudflare/cloudflare"
@@ -41,7 +41,9 @@ variable "config" {
 }
 
 provider "fly" {
-  fly_http_endpoint = "api.machines.dev"
+  useinternaltunnel    = true
+  internaltunnelorg    = "personal"
+  internaltunnelregion = var.config["region"]
 }
 
 resource "fly_app" "app" {
