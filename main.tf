@@ -41,9 +41,7 @@ variable "config" {
 }
 
 provider "fly" {
-  useinternaltunnel    = true
-  internaltunnelorg    = "personal"
-  internaltunnelregion = var.config["region"]
+  fly_http_endpoint = "api.machines.dev"
 }
 
 resource "fly_app" "app" {
