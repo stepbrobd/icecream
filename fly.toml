@@ -1,0 +1,83 @@
+# Git.StepBroBD.com
+app = "com-stepbrobd-git"
+primary_region = "bos"
+kill_signal = "SIGINT"
+kill_timeout = "10s"
+
+# Roll back to the previously running version if failed
+[experimental]
+auto_rollback = true
+
+# Soft Serve
+[build]
+image = "charmcli/soft-serve:v0.5.2"
+
+# Mount volume
+[[mounts]]
+source = "data"
+destination = "/data"
+
+# Environment variables
+[env]
+SOFT_SERVE_DATA_PATH = "/data"
+SOFT_SERVE_NAME = "StepBroBD"
+SOFT_SERVE_INITIAL_ADMIN_KEYS = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ47Qtg6qSenUh6Whg3ZIpIhdZZdqdG+L1z2f9UnB+Mw"
+SOFT_SERVE_SSH_PUBLIC_URL = "ssh://git.stepbrobd.com"
+SOFT_SERVE_HTTP_PUBLIC_URL = "https://git.stepbrobd.com"
+
+# Prometheus
+[[services]]
+protocol = "tcp"
+internal_port = 23233
+auto_stop_machines = true
+auto_start_machines = true
+
+[[services.ports]]
+port = 9090
+
+[services.concurrency]
+type = "connections"
+soft_limit = 25
+hard_limit = 50
+
+# Git
+[[services]]
+protocol = "tcp"
+internal_port = 9418
+auto_stop_machines = true
+auto_start_machines = true
+
+[[services.ports]]
+port = 9418
+
+[services.concurrency]
+type = "connections"
+soft_limit = 25
+hard_limit = 50
+
+# SSH
+[[services]]
+protocol = "tcp"
+internal_port = 23231
+auto_stop_machines = true
+auto_start_machines = true
+
+[services.concurrency]
+type = "connections"
+soft_limit = 25
+hard_limit = 50
+
+[[services.ports]]
+port = 22
+
+# HTTP/HTTPS
+[http_service]
+internal_port = 23232
+auto_stop_machines = true
+auto_start_machines = true
+force_https = true
+
+[http_service.concurrency]
+type = "requests"
+soft_limit = 75
+hard_limit = 100
