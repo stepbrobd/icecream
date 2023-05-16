@@ -10,7 +10,7 @@ auto_rollback = true
 
 # Soft Serve
 [build]
-image = "charmcli/soft-serve:v0.5.3"
+image = "charmcli/soft-serve:v0.5.4"
 
 # Mount volume
 [[mounts]]
