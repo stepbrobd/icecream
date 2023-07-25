@@ -20,7 +20,7 @@ destination = "/data"
 # Environment variables
 [env]
 SOFT_SERVE_DATA_PATH = "/data"
-SOFT_SERVE_NAME = "ssh://git.stepbrobd.com"
+SOFT_SERVE_NAME = "StepBroBD"
 SOFT_SERVE_INITIAL_ADMIN_KEYS = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ47Qtg6qSenUh6Whg3ZIpIhdZZdqdG+L1z2f9UnB+Mw"
 SOFT_SERVE_SSH_PUBLIC_URL = "ssh://git.stepbrobd.com"
 SOFT_SERVE_HTTP_PUBLIC_URL = "https://git.stepbrobd.com"
@@ -29,7 +29,7 @@ SOFT_SERVE_HTTP_PUBLIC_URL = "https://git.stepbrobd.com"
 [[services]]
 protocol = "tcp"
 internal_port = 23233
-auto_stop_machines = true
+auto_stop_machines = false
 auto_start_machines = true
 
 [[services.ports]]
@@ -44,7 +44,7 @@ hard_limit = 50
 [[services]]
 protocol = "tcp"
 internal_port = 9418
-auto_stop_machines = true
+auto_stop_machines = false
 auto_start_machines = true
 
 [[services.ports]]
@@ -59,7 +59,7 @@ hard_limit = 50
 [[services]]
 protocol = "tcp"
 internal_port = 23231
-auto_stop_machines = true
+auto_stop_machines = false
 auto_start_machines = true
 
 [services.concurrency]
@@ -73,7 +73,7 @@ port = 22
 # HTTP/HTTPS
 [http_service]
 internal_port = 23232
-auto_stop_machines = true
+auto_stop_machines = false
 auto_start_machines = true
 force_https = true
 
