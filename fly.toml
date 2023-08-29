@@ -27,23 +27,9 @@ SOFT_SERVE_HTTP_PUBLIC_URL = "https://git.stepbrobd.com"
 SOFT_SERVE_GIT_LISTEN_ADDR = "0.0.0.0:9418"
 SOFT_SERVE_SSH_LISTEN_ADDR = "0.0.0.0:23231"
 SOFT_SERVE_HTTP_LISTEN_ADDR = "0.0.0.0:23232"
+SOFT_SERVE_STATS_LISTEN_ADDR = "0.0.0.0:23233"
 SOFT_SERVE_SSH_IDLE_TIMEOUT = "3600"
 SOFT_SERVE_SSH_MAX_TIMEOUT = "3600"
-
-# Prometheus
-[[services]]
-protocol = "tcp"
-internal_port = 23233
-auto_stop_machines = false
-auto_start_machines = true
-
-[[services.ports]]
-port = 9090
-
-[services.concurrency]
-type = "connections"
-soft_limit = 25
-hard_limit = 50
 
 # Git
 [[services]]
@@ -86,3 +72,18 @@ force_https = true
 type = "requests"
 soft_limit = 75
 hard_limit = 100
+
+# Prometheus
+[[services]]
+protocol = "tcp"
+internal_port = 23233
+auto_stop_machines = false
+auto_start_machines = true
+
+[[services.ports]]
+port = 9090
+
+[services.concurrency]
+type = "connections"
+soft_limit = 25
+hard_limit = 50
