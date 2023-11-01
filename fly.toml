@@ -10,7 +10,7 @@ auto_rollback = true
 
 # Soft Serve
 [build]
-image = "ghcr.io/charmbracelet/soft-serve:v0.6.2"
+image = "ghcr.io/charmbracelet/soft-serve:v0.7.1"
 
 # Mount volume
 [[mounts]]
